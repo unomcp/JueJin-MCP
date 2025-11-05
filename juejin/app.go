@@ -4,19 +4,27 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	goMcp "github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/unomcp/JueJin-MCP/mcp"
 	"github.com/unomcp/JueJin-MCP/middleware"
 	"github.com/unomcp/JueJin-MCP/routes"
 )
 
+type App struct {
+	juejin *JueJin
+	mcp    *goMcp.Server
+}
+
+func NewApp() *App {
+	return &App{
+		juejin: NewJueJin(),
+		mcp:    mcp.InitMCP(),
+	}
+}
+
 func Start() {
 	app := fiber.New(fiber.Config{
 		DisableStartupMessage: false,
-	})
-
-	// 添加请求日志中间件
-	app.Use(func(c *fiber.Ctx) error {
-		log.Printf("[%s] %s", c.Method(), c.Path())
-		return c.Next()
 	})
 
 	app.Use(middleware.Cros())
