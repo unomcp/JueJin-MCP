@@ -4,17 +4,15 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/unomcp/JueJin-MCP/middleware"
+	"github.com/unomcp/JueJin-MCP/app"
 )
 
 func start(port string) {
-	app := newApp(fiber.New(fiber.Config{
+	app := app.NewApp(fiber.New(fiber.Config{
 		DisableStartupMessage: false,
 	}))
 
-	app.FiberApp.Use(middleware.Cros())
-
-	setupRoutes(app)
+	app.SetupRoutes()
 
 	log.Fatal(app.FiberApp.Listen(port))
 }
