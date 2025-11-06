@@ -2,7 +2,6 @@ package mcp
 
 import (
 	"context"
-	"log"
 
 	goMcp "github.com/modelcontextprotocol/go-sdk/mcp"
 )
@@ -35,9 +34,10 @@ func InitMCP() *goMcp.Server {
 		Description: "say hi",
 	}, SayHi)
 
-	log.Println("MCP Server initialized with greet tool")
-
-	// HTTP 模式下不需要调用 server.Run()
-	// server.Run() 只用于 stdio 模式
+	// 添加登录状态工具
+	goMcp.AddTool(server, &goMcp.Tool{
+		Name:        "loginStatus",
+		Description: "get login status",
+	}, LoginStatus)
 	return server
 }
