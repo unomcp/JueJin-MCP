@@ -28,5 +28,12 @@ func InitMCP(jj *juejin.JueJin) *goMcp.Server {
 		Name:        "login status",
 		Description: "获取登录状态",
 	}, mcpInstance.LoginStatus)
+
+	// 添加发布工具
+	goMcp.AddTool(server, &goMcp.Tool{
+		Name:        "publish article",
+		Description: "发布文章",
+	}, mcpInstance.PublishArticle)
+
 	return server
 }

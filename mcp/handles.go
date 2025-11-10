@@ -17,3 +17,13 @@ func (m *MCP) LoginStatus(ctx context.Context, req *goMcp.CallToolRequest, _ any
 
 	return nil, nil, nil
 }
+
+func (m *MCP) PublishArticle(ctx context.Context, req *goMcp.CallToolRequest, _ any) (
+	*goMcp.CallToolResult,
+	any,
+	error,
+) {
+	m.JueJin.PublishArticle()
+
+	return nil, nil, nil
+}
