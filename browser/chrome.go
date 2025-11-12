@@ -1,6 +1,7 @@
 package browser
 
 import (
+	"fmt"
 	"os"
 	"runtime"
 
@@ -9,6 +10,9 @@ import (
 )
 
 func (b *Browser) Chrome() {
+	bin, _ := launcher.LookPath()
+	fmt.Println(bin)
+
 	u := launcher.New().Bin(locateChrome()).MustLaunch()
 	rod.New().ControlURL(u).MustConnect().MustPage("https://example.com")
 }

@@ -2,7 +2,9 @@ package mcp
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/go-rod/rod/lib/launcher"
 	goMcp "github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
@@ -23,7 +25,9 @@ func (m *MCP) PublishArticle(ctx context.Context, req *goMcp.CallToolRequest, _ 
 	any,
 	error,
 ) {
-	m.JueJin.PublishArticle()
+	bin, _ := launcher.LookPath()
+	fmt.Println(bin)
+	// m.JueJin.PublishArticle()
 
 	return nil, nil, nil
 }
