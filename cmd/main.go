@@ -5,9 +5,13 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/unomcp/JueJin-MCP/app"
+	"github.com/unomcp/JueJin-MCP/browser"
 )
 
 func start(port string) {
+	b := browser.New()
+	defer b.B.Close()
+
 	app := app.NewApp(fiber.New(fiber.Config{
 		DisableStartupMessage: false,
 	}))
