@@ -9,7 +9,7 @@ import (
 func New() *rod.Browser {
 	bin, _ := launcher.LookPath()
 
-	la := launcher.New()
+	la := launcher.New().UserDataDir(".juejin-mcp")
 	la.Bin(bin)
 	la.Headless(configs.BrowserHeadless)
 	la.NoSandbox(configs.BrowserNoSandbox)
