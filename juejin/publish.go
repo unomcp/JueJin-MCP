@@ -13,9 +13,11 @@ type PublishContent struct {
 }
 
 var (
-	PUBLISH_URL   = "https://juejin.cn/editor/drafts/new?v=2"
-	TITLE_INPUT   = `//*[@id="juejin-web-editor"]/div[2]/div/header/input`
-	CONTENT_INPUT = `//*[@id="juejin-web-editor"]/div[2]/div/div/div/div[2]/div[1]/div`
+	PUBLISH_URL            = "https://juejin.cn/editor/drafts/new?v=2"
+	TITLE_INPUT            = `//*[@id="juejin-web-editor"]/div[2]/div/header/input`
+	CONTENT_INPUT          = `//*[@id="juejin-web-editor"]/div[2]/div/div/div/div[2]/div[1]/div`
+	PUBLISH_BUTTON         = `//*[@id="juejin-web-editor"]/div[2]/div/header/div[2]/div[3]/button`
+	CONFIRM_PUBLISH_BUTTON = `//*[@id="juejin-web-editor"]/div[2]/div/header/div[2]/div[3]/div/div[8]/div/button[2]`
 )
 
 func Publish(page *rod.Page, ctx context.Context, content PublishContent) error {
