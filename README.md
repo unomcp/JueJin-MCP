@@ -4,7 +4,20 @@
   <strong>JueJin-MCP是一个能让AI生成的文章自动发布到掘金的工具</strong>
 </p>
 
-### 开始使用
+### 🛠️ 如何使用？
+
+<details>
+<summary><b>在 Cursor 使用</b></summary>
+
+Cursor 配置: `Settings` -> `Cursor Settings` -> `MCP` -> `Add new global MCP server`
+
+Pasting the following configuration into your Cursor `~/.cursor/mcp.json` file is the recommended approach. You may also install in a specific project by creating `.cursor/mcp.json` in your project folder. 查看 [Cursor MCP docs](https://docs.cursor.com/context/model-context-protocol) for more info.
+
+> Since Cursor 1.0, you can click the install button below for instant one-click installation.
+
+#### Cursor Local Server Connection
+
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=context7&config=eyJjb21tYW5kIjoibnB4IC15IEB1cHN0YXNoL2NvbnRleHQ3LW1jcCJ9)
 
 ```json
 {
@@ -16,6 +29,9 @@
   }
 }
 ```
+
+</details>
+
 
 ### 项目结构
 ```bash
