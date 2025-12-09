@@ -27,7 +27,7 @@ func Publish(page *rod.Page, ctx context.Context, content PublishContent) error 
 	writeArticle(p, ctx, content)
 	PublishPanel(page, ctx)
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(3 * time.Second)
 	return nil
 }
 
