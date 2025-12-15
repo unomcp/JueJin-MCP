@@ -11,6 +11,7 @@ type PublishContent struct {
 	Title         string
 	Content       string
 	CategoryIndex int
+	Summary       string
 }
 
 var (
@@ -28,6 +29,7 @@ func Publish(page *rod.Page, ctx context.Context, content PublishContent) error 
 	writeArticle(p, ctx, content)
 	PublishPanel(page, ctx)
 	SelectorCategoryItem(page, ctx, content.CategoryIndex)
+	InputSummary(page, ctx, content.Summary)
 
 	time.Sleep(3 * time.Second)
 	return nil
