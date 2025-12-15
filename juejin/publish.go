@@ -8,8 +8,9 @@ import (
 )
 
 type PublishContent struct {
-	Title   string
-	Content string
+	Title         string
+	Content       string
+	CategoryIndex int
 }
 
 var (
@@ -26,6 +27,7 @@ func Publish(page *rod.Page, ctx context.Context, content PublishContent) error 
 
 	writeArticle(p, ctx, content)
 	PublishPanel(page, ctx)
+	SelectorCategoryItem(page, ctx, content.CategoryIndex)
 
 	time.Sleep(3 * time.Second)
 	return nil
