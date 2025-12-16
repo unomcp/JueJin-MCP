@@ -12,6 +12,7 @@ type PublishContent struct {
 	Content       string
 	CategoryIndex int
 	Summary       string
+	Tags          []string
 }
 
 var (
@@ -27,12 +28,15 @@ func Publish(page *rod.Page, ctx context.Context, content PublishContent) error 
 	p.MustNavigate(PUBLISH_URL).MustWaitLoad()
 
 	writeArticle(p, ctx, content)
-	PublishPanel(page, ctx)
-	if err := SelectorCategoryItem(page, ctx, content.CategoryIndex); err != nil {
+	PublishPanel(p, ctx)
+	if err := SelectorCategoryItem(p, ctx, content.CategoryIndex); err != nil {
+		return err
+	}
+	if err := SelectTags(p, ctx, content.Tags); err != nil {
 		return err
 	}
 
-	InputSummary(page, ctx, content.Summary)
+	InputSummary(p, ctx, content.Summary)
 
 	time.Sleep(3 * time.Second)
 	return nil
