@@ -38,7 +38,13 @@ func Publish(page *rod.Page, ctx context.Context, content PublishContent) error 
 
 	InputSummary(p, ctx, content.Summary)
 
+	time.Sleep(200 * time.Millisecond)
+
+	confirmPublishBtn := page.MustElementX(CONFIRM_PUBLISH_BUTTON)
+	confirmPublishBtn.MustClick()
+
 	time.Sleep(3 * time.Second)
+
 	return nil
 }
 
