@@ -2,8 +2,10 @@ package juejin
 
 import (
 	"context"
+	"time"
 
 	"github.com/go-rod/rod"
+	"github.com/go-rod/rod/lib/input"
 )
 
 var (
@@ -772,6 +774,13 @@ func SelectTags(page *rod.Page, _ctx context.Context, tags []string) error {
 	if len(validTags) == 0 {
 		return nil
 	}
+
+	tagInput := page.MustElementX(TAG_INPUT)
+	tagInput.MustInput(validTags[0])
+
+	time.Sleep(2 * time.Second)
+
+	tagInput.MustType(input.Enter)
 
 	return nil
 }
