@@ -79,7 +79,7 @@ Cursor 配置: `Settings` -> `Cursor Settings` -> `MCP` -> `Add new global MCP s
 
 ### 🤖 如何使用
 
-第一步启动 `mcp/inspector`。(因为使用的无头浏览器，为了不必要的 token 开销，可以手动登录，不然就需要ai帮你执行 登录)
+第一步启动 `mcp/inspector`。(为了让用户无感发布，所以使用的无头浏览器。代表需要进行手动登录）
 ```bash
 npx @modelcontextprotocol/inspector
 ```
