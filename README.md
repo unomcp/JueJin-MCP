@@ -9,8 +9,10 @@
 <br/>
 
 <p align="center">
-  <strong>JueJin-MCP是一个能让AI生成的文章自动发布到掘金的工具</strong>
+  <strong>JueJin-MCP 是一个能让AI生成的文章自动发布到掘金的工具</strong>
 </p>
+
+项目愿景是解放你的双手，让ai帮你的文章质量兜底，让每个人都能有一个掘金Lv8的账号
 
 > [!IMPORTANT]
 > 项目目前还在开发中，尚未正式发布。你可以直接构建源代码进行已有功能的使用。
@@ -29,18 +31,7 @@
 - [ ] 支持文章样式 ｜ 代码块样式
 
 
-### 🛠️ 使用示例
-
-目前需要自己启动 `mcp inspector` 来进行手动登录，再运行 `juejin-mcp` 服务。
-
-```bash
-# 启动 mcp inspector
-npx @modelcontextprotocol/inspector
-# 下一步
-go run .
-```
-
-完成以上操作后，再使用对应的AI工具来做文章生成，通过提示词描述 `使用juejin-mcp将文章发布到掘金` 完成自动化。
+### 🛠️ MCP配置
 
 <details>
 <summary><b>在 Cursor 使用</b></summary>
@@ -85,6 +76,25 @@ Cursor 配置: `Settings` -> `Cursor Settings` -> `MCP` -> `Add new global MCP s
 }
 ```
 </details>
+
+### 🤖 如何使用
+
+第一步启动 `mcp/inspector`。(因为使用的无头浏览器，为了不必要的 token 开销，可以手动登录，不然就需要ai帮你执行 登录)
+```bash
+npx @modelcontextprotocol/inspector
+```
+![这是图片](/assets/inspector.png)
+
+第二步启动mcp
+```bash
+git clone https://github.com/unomcp/JueJin-MCP
+
+cd JueJin-MCP
+
+go run .
+```
+
+第三部使用，在你写完提示词后，输入 `使用 juejin-mcp 将文章发布到掘金` 即可！
 
 ### ⭐ Star 支持一下！
 
