@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
@@ -32,7 +33,8 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.24'
+          go-version-file: go.mod
+          cache-dependency-path: | go.sum
 
       - name: Get dependencies
         run: go mod download

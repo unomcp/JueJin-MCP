@@ -37,3 +37,6 @@ go.work.sum
 JueJin-MCP
 
 .juejin-mcp
+
+# Build artifacts
+dist/
