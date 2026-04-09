@@ -2,6 +2,7 @@ package juejin
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/go-rod/rod"
@@ -10,6 +11,8 @@ import (
 type PublishContent struct {
 	Title         string
 	Content       string
+	Theme         string
+	Highlight     string
 	CategoryIndex int
 	Summary       string
 	Tags          []string
@@ -64,12 +67,25 @@ func writeArticle(page *rod.Page, _ context.Context, content PublishContent) {
 	titleInput := page.MustElementX(TITLE_INPUT)
 	titleInput.MustInput(content.Title)
 
+	body := content.Content
+	if content.Theme != "" || content.Highlight != "" {
+		frontmatter := "---\n"
+		if content.Theme != "" {
+			frontmatter += fmt.Sprintf("theme: %s\n", content.Theme)
+		}
+		if content.Highlight != "" {
+			frontmatter += fmt.Sprintf("highlight: %s\n", content.Highlight)
+		}
+		frontmatter += "---\n\n"
+		body = frontmatter + content.Content
+	}
+
 	cm := page.MustElementX(CONTENT_INPUT)
 	cm.Eval(`
 		(...args) => {
 			return this.CodeMirror.setValue(args[0])
 		}
-	`, content.Content)
+	`, body)
 }
 
 func PublishPanel(page *rod.Page, _ context.Context) {
