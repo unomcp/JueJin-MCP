@@ -77,6 +77,48 @@ Cursor 配置: `Settings` -> `Cursor Settings` -> `MCP` -> `Add new global MCP s
 ```
 </details>
 
+<details>
+<summary><b>在 Claude Code 使用</b></summary>
+
+通过 Claude Code CLI 添加 MCP 服务器：
+
+```bash
+claude mcp add juejin-mcp --transport sse http://localhost:10086/mcp
+```
+
+或手动编辑 `~/.claude/settings.json`：
+
+```json
+{
+  "mcpServers": {
+    "juejin-mcp": {
+      "type": "sse",
+      "url": "http://localhost:10086/mcp"
+    }
+  }
+}
+```
+
+查看 [Claude Code MCP docs](https://docs.anthropic.com/en/docs/claude-code/mcp) 获取更多。
+</details>
+
+<details>
+<summary><b>在 Codex 使用</b></summary>
+
+在项目根目录创建 `.codex/mcp.json`，或全局配置 `~/.codex/mcp.json`：
+
+```json
+{
+  "mcpServers": {
+    "juejin-mcp": {
+      "type": "sse",
+      "url": "http://localhost:10086/mcp"
+    }
+  }
+}
+```
+</details>
+
 ### 🤖 如何使用
 
 第一步启动 `mcp/inspector`。(为了让用户无感发布，所以使用的无头浏览器。代表需要进行手动登录）
