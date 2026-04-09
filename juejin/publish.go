@@ -23,6 +23,18 @@ var (
 	CONFIRM_PUBLISH_BUTTON = `//*[@id="juejin-web-editor"]/div[2]/div/header/div[2]/div[3]/div/div[8]/div/button[2]`
 )
 
+func Draft(page *rod.Page, ctx context.Context, content PublishContent) error {
+	p := page.Context(ctx)
+	p.MustNavigate(PUBLISH_URL).MustWaitLoad()
+
+	writeArticle(p, ctx, content)
+
+	// 等待掘金编辑器自动保存草稿
+	time.Sleep(3 * time.Second)
+
+	return nil
+}
+
 func Publish(page *rod.Page, ctx context.Context, content PublishContent) error {
 	p := page.Context(ctx)
 	p.MustNavigate(PUBLISH_URL).MustWaitLoad()

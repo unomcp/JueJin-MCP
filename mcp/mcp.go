@@ -21,6 +21,12 @@ func initMCP() *goMcp.Server {
 		Description: "登录掘金",
 	}, loginTool)
 
+	// 添加草稿工具
+	goMcp.AddTool(server, &goMcp.Tool{
+		Name:        "draft",
+		Description: "写掘金文章保存到草稿箱（不发布）",
+	}, draftTool)
+
 	// 添加发布工具
 	goMcp.AddTool(server, &goMcp.Tool{
 		Name:        "publish",
