@@ -83,7 +83,7 @@ Cursor 配置: `Settings` -> `Cursor Settings` -> `MCP` -> `Add new global MCP s
 通过 Claude Code CLI 添加 MCP 服务器：
 
 ```bash
-claude mcp add juejin-mcp --transport sse http://localhost:10086/mcp
+claude mcp add juejin-mcp --transport http http://localhost:10086/mcp
 ```
 
 或手动编辑 `~/.claude/settings.json`：
@@ -92,7 +92,7 @@ claude mcp add juejin-mcp --transport sse http://localhost:10086/mcp
 {
   "mcpServers": {
     "juejin-mcp": {
-      "type": "sse",
+      "type": "http",
       "url": "http://localhost:10086/mcp"
     }
   }
@@ -111,7 +111,7 @@ claude mcp add juejin-mcp --transport sse http://localhost:10086/mcp
 {
   "mcpServers": {
     "juejin-mcp": {
-      "type": "sse",
+      "type": "http",
       "url": "http://localhost:10086/mcp"
     }
   }
