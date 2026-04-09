@@ -23,7 +23,7 @@ func loginTool(ctx context.Context, _req *goMcp.CallToolRequest, _ any) (
 	any,
 	error,
 ) {
-	b := browser.New()
+	b := browser.New(false)
 	defer b.Close()
 
 	p := b.MustPage()
